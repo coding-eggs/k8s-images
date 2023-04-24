@@ -80,4 +80,11 @@ jobs:
           docker push ailuoli/tektoncd-pipeline-cmd-workingdirinit:v0.46.0
           docker push ailuoli/tektoncd-pipeline-cmd-resolvers:v0.46.0
           docker push ailuoli/tektoncd-pipeline-cmd-webhook:v0.46.0
+          docker push ailuoli/tektoncd-dashboard-cmd-dashboard:v0.34.0
+          docker push ailuoli/tektoncd-triggers-cmd-controller:v0.23.1
+          docker push ailuoli/tektoncd-triggers-cmd-eventlistenersink:v0.23.1
+          docker push ailuoli/tektoncd-triggers-cmd-webhook:v0.23.1
+          docker push ailuoli/tektoncd-triggers-cmd-interceptors:v0.23.1
+          
+          
 
