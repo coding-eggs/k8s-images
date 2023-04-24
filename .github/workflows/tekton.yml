@@ -30,19 +30,39 @@ jobs:
         run: |
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.46.0 ailuoli/tektoncd-pipeline-cmd-controller:v0.46.0
+          
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.46.0 ailuoli/tektoncd-pipeline-cmd-entrypoint:v0.46.0
+          
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.46.0 ailuoli/tektoncd-pipeline-cmd-nop:v0.46.0
+          
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.46.0 ailuoli/tektoncd-pipeline-cmd-sidecarlogresults:v0.46.0
+          
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.46.0 ailuoli/tektoncd-pipeline-cmd-workingdirinit:v0.46.0
+          
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.46.0 ailuoli/tektoncd-pipeline-cmd-resolvers:v0.46.0
+          
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.46.0
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.46.0 ailuoli/tektoncd-pipeline-cmd-webhook:v0.46.0
           
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.34.0
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.34.0 ailuoli/tektoncd-dashboard-cmd-dashboard:v0.34.0
+          
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.23.1
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.23.1 ailuoli/tektoncd-triggers-cmd-controller:v0.23.1
+          
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.23.1
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.23.1 ailuoli/tektoncd-triggers-cmd-eventlistenersink:v0.23.1
+          
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.23.1
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.23.1 ailuoli/tektoncd-triggers-cmd-webhook:v0.23.1
+          
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.23.1
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.23.1 ailuoli/tektoncd-triggers-cmd-interceptors:v0.23.1
       
       - name: Docker Login
         uses: docker/login-action@v2.1.0
