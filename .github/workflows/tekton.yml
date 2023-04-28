@@ -19,7 +19,10 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    env:
+      PIPELINE_VERSION: "v0.47.0"
+      TRIGGER_VERSION: "v0.23.1"
+      DASHBOARD_VERSION: "v0.35.0"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -28,41 +31,41 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.46.0 ailuoli/tektoncd-pipeline-cmd-controller:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.47.0 ailuoli/tektoncd-pipeline-cmd-controller:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.46.0 ailuoli/tektoncd-pipeline-cmd-entrypoint:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.47.0 ailuoli/tektoncd-pipeline-cmd-entrypoint:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.46.0 ailuoli/tektoncd-pipeline-cmd-nop:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-nop:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.46.0 ailuoli/tektoncd-pipeline-cmd-sidecarlogresults:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-sidecarlogresults:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.46.0 ailuoli/tektoncd-pipeline-cmd-workingdirinit:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-workingdirinit:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.46.0 ailuoli/tektoncd-pipeline-cmd-resolvers:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-resolvers:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.46.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:v0.46.0 ailuoli/tektoncd-pipeline-cmd-webhook:v0.46.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-webhook:${PIPELINE_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.34.0
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.34.0 ailuoli/tektoncd-dashboard-cmd-dashboard:v0.34.0
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:${DASHBOARD_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:${DASHBOARD_VERSION} ailuoli/tektoncd-dashboard-cmd-dashboard:${DASHBOARD_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.23.1
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.23.1 ailuoli/tektoncd-triggers-cmd-controller:v0.23.1
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:${TRIGGER_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:${TRIGGER_VERSION} ailuoli/tektoncd-triggers-cmd-controller:${TRIGGER_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.23.1
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.23.1 ailuoli/tektoncd-triggers-cmd-eventlistenersink:v0.23.1
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:${TRIGGER_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:${TRIGGER_VERSION} ailuoli/tektoncd-triggers-cmd-eventlistenersink:${TRIGGER_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.23.1
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.23.1 ailuoli/tektoncd-triggers-cmd-webhook:v0.23.1
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:${TRIGGER_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:${TRIGGER_VERSION} ailuoli/tektoncd-triggers-cmd-webhook:${TRIGGER_VERSION}
           
-          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.23.1
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.23.1 ailuoli/tektoncd-triggers-cmd-interceptors:v0.23.1
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:${TRIGGER_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:${TRIGGER_VERSION} ailuoli/tektoncd-triggers-cmd-interceptors:${TRIGGER_VERSION}
       
       - name: Docker Login
         uses: docker/login-action@v2.1.0
@@ -73,18 +76,18 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Push to Docker Registry
         run: |
-          docker push ailuoli/tektoncd-pipeline-cmd-controller:v0.46.0
-          docker push ailuoli/tektoncd-pipeline-cmd-entrypoint:v0.46.0
-          docker push ailuoli/tektoncd-pipeline-cmd-nop:v0.46.0
-          docker push ailuoli/tektoncd-pipeline-cmd-sidecarlogresults:v0.46.0
-          docker push ailuoli/tektoncd-pipeline-cmd-workingdirinit:v0.46.0
-          docker push ailuoli/tektoncd-pipeline-cmd-resolvers:v0.46.0
-          docker push ailuoli/tektoncd-pipeline-cmd-webhook:v0.46.0
-          docker push ailuoli/tektoncd-dashboard-cmd-dashboard:v0.34.0
-          docker push ailuoli/tektoncd-triggers-cmd-controller:v0.23.1
-          docker push ailuoli/tektoncd-triggers-cmd-eventlistenersink:v0.23.1
-          docker push ailuoli/tektoncd-triggers-cmd-webhook:v0.23.1
-          docker push ailuoli/tektoncd-triggers-cmd-interceptors:v0.23.1
+          docker push ailuoli/tektoncd-pipeline-cmd-controller:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-pipeline-cmd-entrypoint:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-pipeline-cmd-nop:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-pipeline-cmd-sidecarlogresults:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-pipeline-cmd-workingdirinit:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-pipeline-cmd-resolvers:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-pipeline-cmd-webhook:${PIPELINE_VERSION}
+          docker push ailuoli/tektoncd-dashboard-cmd-dashboard:${DASHBOARD_VERSION}
+          docker push ailuoli/tektoncd-triggers-cmd-controller:${TRIGGER_VERSION}
+          docker push ailuoli/tektoncd-triggers-cmd-eventlistenersink:${TRIGGER_VERSION}
+          docker push ailuoli/tektoncd-triggers-cmd-webhook:${TRIGGER_VERSION}
+          docker push ailuoli/tektoncd-triggers-cmd-interceptors:${TRIGGER_VERSION}
           
           
 
