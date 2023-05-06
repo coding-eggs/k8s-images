@@ -1,0 +1,97 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      alertmanager_version: "v0.25.0"
+      oauth2-proxy_version: "v7.3.0"
+      kube-webhook-certgen_version: "v20221220-controller-v1.5.1-58-g787ea74b6"
+      prometheus-operator_version: "latest"
+      prometheus-config-reloader_version: "latest"
+      prometheus_version: "v2.42.0"
+      thanos_version: "v0.30.2"
+      node-exporter_version: "latest"
+      kube-rbac-proxy_version: "v0.14.0"
+      kube-state-metrics_version: "latest"
+      k8s-sidecar_version: "1.22.0"
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          docker pull quay.io/prometheus/alertmanager:${alertmanager_version}
+          docker tag quay.io/prometheus/alertmanager:${alertmanager_version} ailuoli/prometheus-alertmanager:${alertmanager_version}
+          
+          docker pull quay.io/oauth2-proxy/oauth2-proxy:${oauth2-proxy_version}
+          docker tag quay.io/oauth2-proxy/oauth2-proxy:${oauth2-proxy_version} ailuoli/oauth2-proxy-oauth2-proxy:${oauth2-proxy_version}
+          
+          docker pull registry.k8s.io/ingress-nginx/kube-webhook-certgen:${kube-webhook-certgen_version}
+          docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:${kube-webhook-certgen_version} ailuoli/ingress-nginx-kube-webhook-certgen:${kube-webhook-certgen_version}
+          
+          docker pull quay.io/prometheus-operator/prometheus-operator:${prometheus-operator_version}
+          docker tag quay.io/prometheus-operator/prometheus-operator:${prometheus-operator_version} ailuoli/prometheus-operator-prometheus-operator:${prometheus-operator_version}
+          
+          docker pull quay.io/prometheus-operator/prometheus-config-reloader:${prometheus-config-reloader_version}
+          docker tag quay.io/prometheus-operator/prometheus-config-reloader:${prometheus-config-reloader_version} ailuoli/prometheus-operator-prometheus-config-reloader:${prometheus-config-reloader_version}
+          
+          docker pull quay.io/prometheus/prometheus:${prometheus_version}
+          docker tag quay.io/prometheus/prometheus:${prometheus_version} ailuoli/prometheus-prometheus:${prometheus_version}
+          
+          docker pull quay.io/thanos/thanos:${thanos_version}
+          docker tag quay.io/thanos/thanos:${thanos_version} ailuoli/thanos-thanos:${thanos_version}
+          
+          docker pull quay.io/prometheus/node-exporter:${node-exporter_version}
+          docker tag quay.io/prometheus/node-exporter:${node-exporter_version} ailuoli/prometheus-node-exporter:${node-exporter_version}
+          
+          docker pull quay.io/brancz/kube-rbac-proxy:${kube-rbac-proxy_version}
+          docker tag quay.io/brancz/kube-rbac-proxy:${kube-rbac-proxy_version} ailuoli/brancz-kube-rbac-proxy:${kube-rbac-proxy_version}
+          
+          docker pull registry.k8s.io/kube-state-metrics/kube-state-metrics:${kube-state-metrics_version}
+          docker tag registry.k8s.io/kube-state-metrics/kube-state-metrics:${kube-state-metrics_version} ailuoli/kube-state-metrics-kube-state-metrics:${kube-state-metrics_version}
+          
+          docker pull quay.io/kiwigrid/k8s-sidecar:${k8s-sidecar_version}
+          docker tag quay.io/kiwigrid/k8s-sidecar:${k8s-sidecar_version} ailuoli/kiwigrid/k8s-sidecar:${k8s-sidecar_version}
+          
+
+      - name: Docker Login
+        uses: docker/login-action@v2.1.0
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      # Runs a set of commands using the runners shell
+      - name: Push to Docker Registry
+        run: |
+          docker push ailuoli/prometheus-alertmanager:${alertmanager_version}
+          docker push ailuoli/oauth2-proxy-oauth2-proxy:${oauth2-proxy_version}
+          docker push ailuoli/ingress-nginx-kube-webhook-certgen:${kube-webhook-certgen_version}
+          docker push ailuoli/prometheus-operator-prometheus-operator:${prometheus-operator_version}
+          docker push ailuoli/prometheus-operator-prometheus-config-reloader:${prometheus-config-reloader_version}
+          docker push ailuoli/prometheus-prometheus:${prometheus_version}
+          docker push ailuoli/thanos-thanos:${thanos_version}
+          docker push ailuoli/prometheus-node-exporter:${node-exporter_version}
+          docker push ailuoli/brancz-kube-rbac-proxy:${kube-rbac-proxy_version}
+          docker push ailuoli/kube-state-metrics-kube-state-metrics:${kube-state-metrics_version}
+          docker push ailuoli/kiwigrid/k8s-sidecar:${k8s-sidecar_version}
+          
+          
