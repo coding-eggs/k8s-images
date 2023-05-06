@@ -20,16 +20,15 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
+      HOME_CHART_APPVERSION: "v0.63.0"
+      NODE_EXPORTER_CHAT_APPVERSION: "1.5.0"
+      KUBE_STATE_METRICS_CHAT_VERSION: "2.8.2"
       ALERTMANAGER_VERSION: "v0.25.0"
       OAUTH2_PROXY_VERSION: "v7.3.0"
       KUBE_WEBHOOK_CERTGEN_VERSION: "v20221220-controller-v1.5.1-58-g787ea74b6"
-      PROMETHEUS_OPERATOR_VERSION: "latest"
-      PROMETHEUS_CONFIG_RELOADER_VERSION: "latest"
       PROMETHEUS_VERSION: "v2.42.0"
       THANOS_VERSION: "v0.30.2"
-      NODE_EXPORTER_VERSION: "latest"
       KUBE_RBAC_PROXY_VERSION: "v0.14.0"
-      KUBE_STATE_METRICS_VERSION: "latest"
       K8S_SIDECAR_VERSION: "1.22.0"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -48,11 +47,11 @@ jobs:
           docker pull registry.k8s.io/ingress-nginx/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
           docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION} ailuoli/ingress-nginx-kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
           
-          docker pull quay.io/prometheus-operator/prometheus-operator:${PROMETHEUS_OPERATOR_VERSION}
-          docker tag quay.io/prometheus-operator/prometheus-operator:${PROMETHEUS_OPERATOR_VERSION} ailuoli/prometheus-operator-prometheus-operator:${PROMETHEUS_OPERATOR_VERSION}
+          docker pull quay.io/prometheus-operator/prometheus-operator:${HOME_CHART_APPVERSION}
+          docker tag quay.io/prometheus-operator/prometheus-operator:${HOME_CHART_APPVERSION} ailuoli/prometheus-operator-prometheus-operator:${HOME_CHART_APPVERSION}
           
-          docker pull quay.io/prometheus-operator/prometheus-config-reloader:${PROMETHEUS_CONFIG_RELOADER_VERSION}
-          docker tag quay.io/prometheus-operator/prometheus-config-reloader:${PROMETHEUS_CONFIG_RELOADER_VERSION} ailuoli/prometheus-operator-prometheus-config-reloader:${PROMETHEUS_CONFIG_RELOADER_VERSION}
+          docker pull quay.io/prometheus-operator/prometheus-config-reloader:${HOME_CHART_APPVERSION}
+          docker tag quay.io/prometheus-operator/prometheus-config-reloader:${HOME_CHART_APPVERSION} ailuoli/prometheus-operator-prometheus-config-reloader:${HOME_CHART_APPVERSION}
           
           docker pull quay.io/prometheus/prometheus:${PROMETHEUS_VERSION}
           docker tag quay.io/prometheus/prometheus:${PROMETHEUS_VERSION} ailuoli/prometheus-prometheus:${PROMETHEUS_VERSION}
@@ -60,14 +59,14 @@ jobs:
           docker pull quay.io/thanos/thanos:${THANOS_VERSION}
           docker tag quay.io/thanos/thanos:${THANOS_VERSION} ailuoli/thanos-thanos:${THANOS_VERSION}
           
-          docker pull quay.io/prometheus/node-exporter:${NODE_EXPORTER_VERSION}
-          docker tag quay.io/prometheus/node-exporter:${NODE_EXPORTER_VERSION} ailuoli/prometheus-node-exporter:${NODE_EXPORTER_VERSION}
+          docker pull quay.io/prometheus/node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
+          docker tag quay.io/prometheus/node-exporter:${NODE_EXPORTER_CHAT_APPVERSION} ailuoli/prometheus-node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
           
           docker pull quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
           docker tag quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION} ailuoli/brancz-kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
           
-          docker pull registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_VERSION}
-          docker tag registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_VERSION} ailuoli/kube-state-metrics-kube-state-metrics:${KUBE_STATE_METRICS_VERSION}
+          docker pull registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_CHAT_VERSION}
+          docker tag registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_CHAT_VERSION} ailuoli/kube-state-metrics-kube-state-metrics:${KUBE_STATE_METRICS_CHAT_VERSION}
           
           docker pull quay.io/kiwigrid/k8s-sidecar:${K8S_SIDECAR_VERSION}
           docker tag quay.io/kiwigrid/k8s-sidecar:${K8S_SIDECAR_VERSION} ailuoli/kiwigrid/k8s-sidecar:${K8S_SIDECAR_VERSION}
@@ -85,13 +84,11 @@ jobs:
           docker push ailuoli/prometheus-alertmanager:${ALERTMANAGER_VERSION}
           docker push ailuoli/oauth2-proxy-oauth2-proxy:${OAUTH2_PROXY_VERSION}
           docker push ailuoli/ingress-nginx-kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
-          docker push ailuoli/prometheus-operator-prometheus-operator:${PROMETHEUS_OPERATOR_VERSION}
-          docker push ailuoli/prometheus-operator-prometheus-config-reloader:${PROMETHEUS_CONFIG_RELOADER_VERSION}
+          docker push ailuoli/prometheus-operator-prometheus-operator:${HOME_CHART_APPVERSION}
+          docker push ailuoli/prometheus-operator-prometheus-config-reloader:${HOME_CHART_APPVERSION}
           docker push ailuoli/prometheus-prometheus:${PROMETHEUS_VERSION}
           docker push ailuoli/thanos-thanos:${THANOS_VERSION}
-          docker push ailuoli/prometheus-node-exporter:${NODE_EXPORTER_VERSION}
+          docker push ailuoli/prometheus-node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
           docker push ailuoli/brancz-kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
-          docker push ailuoli/kube-state-metrics-kube-state-metrics:${KUBE_STATE_METRICS_VERSION}
+          docker push ailuoli/kube-state-metrics-kube-state-metrics:${KUBE_STATE_METRICS_CHAT_VERSION}
           docker push ailuoli/kiwigrid/k8s-sidecar:${K8S_SIDECAR_VERSION}
-          
-          
