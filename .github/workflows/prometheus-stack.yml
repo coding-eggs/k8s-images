@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HOME_CHART_APPVERSION: "v0.63.0"
+      NODE_EXPORTER_CHAT_APPVERSION: "1.5.0"
       KUBE_STATE_METRICS_CHAT_VERSION: "2.8.2"
       ALERTMANAGER_VERSION: "v0.25.0"
       OAUTH2_PROXY_VERSION: "v7.3.0"
@@ -58,8 +59,8 @@ jobs:
           docker pull quay.io/thanos/thanos:${THANOS_VERSION}
           docker tag quay.io/thanos/thanos:${THANOS_VERSION} ailuoli/thanos-thanos:${THANOS_VERSION}
           
-          docker pull quay.io/prometheus/node-exporter:${HOME_CHART_APPVERSION}
-          docker tag quay.io/prometheus/node-exporter:${HOME_CHART_APPVERSION} ailuoli/prometheus-node-exporter:${HOME_CHART_APPVERSION}
+          docker pull quay.io/prometheus/node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
+          docker tag quay.io/prometheus/node-exporter:${NODE_EXPORTER_CHAT_APPVERSION} ailuoli/prometheus-node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
           
           docker pull quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
           docker tag quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION} ailuoli/brancz-kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
@@ -76,7 +77,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      
+
       # Runs a set of commands using the runners shell
       - name: Push to Docker Registry
         run: |
@@ -87,7 +88,7 @@ jobs:
           docker push ailuoli/prometheus-operator-prometheus-config-reloader:${HOME_CHART_APPVERSION}
           docker push ailuoli/prometheus-prometheus:${PROMETHEUS_VERSION}
           docker push ailuoli/thanos-thanos:${THANOS_VERSION}
-          docker push ailuoli/prometheus-node-exporter:${HOME_CHART_APPVERSION}
+          docker push ailuoli/prometheus-node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
           docker push ailuoli/brancz-kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
           docker push ailuoli/kube-state-metrics-kube-state-metrics:${KUBE_STATE_METRICS_CHAT_VERSION}
           docker push ailuoli/kiwigrid/k8s-sidecar:${K8S_SIDECAR_VERSION}
