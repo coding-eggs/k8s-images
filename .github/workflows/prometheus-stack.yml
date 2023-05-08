@@ -59,8 +59,7 @@ jobs:
           docker pull quay.io/thanos/thanos:${THANOS_VERSION}
           docker tag quay.io/thanos/thanos:${THANOS_VERSION} ailuoli/thanos-thanos:${THANOS_VERSION}
           
-          docker pull quay.io/prometheus/node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
-          docker tag quay.io/prometheus/node-exporter:${NODE_EXPORTER_CHAT_APPVERSION} ailuoli/prometheus-node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
+
           
           docker pull quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
           docker tag quay.io/brancz/kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION} ailuoli/brancz-kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
@@ -88,7 +87,6 @@ jobs:
           docker push ailuoli/prometheus-operator-prometheus-config-reloader:${HOME_CHART_APPVERSION}
           docker push ailuoli/prometheus-prometheus:${PROMETHEUS_VERSION}
           docker push ailuoli/thanos-thanos:${THANOS_VERSION}
-          docker push ailuoli/prometheus-node-exporter:${NODE_EXPORTER_CHAT_APPVERSION}
           docker push ailuoli/brancz-kube-rbac-proxy:${KUBE_RBAC_PROXY_VERSION}
           docker push ailuoli/kube-state-metrics-kube-state-metrics:${KUBE_STATE_METRICS_CHAT_VERSION}
           docker push ailuoli/kiwigrid/k8s-sidecar:${K8S_SIDECAR_VERSION}
