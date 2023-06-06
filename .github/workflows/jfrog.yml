@@ -34,14 +34,73 @@ jobs:
           
           docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902
           docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902 ailuoli/ubi-minimal:8.6-902
-      - name: Docker Login
-        uses: docker/login-action@v2.1.0
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+          docker pull releases-docker.jfrog.io/jfrog/xray-analysis:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/xray-analysis:${APP_VERSION} ailuoli/xray-analysis:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/xray-indexer:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/xray-indexer:${APP_VERSION} ailuoli/xray-indexer:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/xray-persist:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/xray-persist:${APP_VERSION} ailuoli/xray-persist:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/xray-server:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/xray-server:${APP_VERSION} ailuoli/xray-server:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/router:7.67.0
+          docker tag releases-docker.jfrog.io/jfrog/router:7.67.0 ailuoli/router:7.67.0
+          
+          docker pull releases-docker.jfrog.io/jfrog/router:7.45.0
+          docker tag releases-docker.jfrog.io/jfrog/router:7.45.0 ailuoli/router:7.45.0
+          
+          docker pull releases-docker.jfrog.io/jfrog/observability:1.13.1
+          docker tag releases-docker.jfrog.io/jfrog/observability:1.13.1 ailuoli/observability:1.13.1   
+          
+          docker pull releases-docker.jfrog.io/jfrog/observability:1.9.3
+          docker tag releases-docker.jfrog.io/jfrog/observability:1.9.3 ailuoli/observability:1.9.3
+          
+          docker pull releases-docker.jfrog.io/jfrog/artifactory-pro:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/artifactory-pro:${APP_VERSION} ailuoli/artifactory-pro:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/nginx-artifactory-pro:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/nginx-artifactory-pro:${APP_VERSION} ailuoli/nginx-artifactory-pro:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/distribution-distribution:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/distribution-distribution:${APP_VERSION} ailuoli/distribution-distribution:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/elasticsearch-sg:7.17.6
+          docker tag releases-docker.jfrog.io/jfrog/elasticsearch-sg:7.17.6 ailuoli/elasticsearch-sg:7.17.6
+          
+          docker pull releases-docker.jfrog.io/jfrog/insight-server:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/insight-server:${APP_VERSION} ailuoli/insight-server:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/insight-scheduler:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/insight-scheduler:${APP_VERSION} ailuoli/insight-scheduler:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/jfrog/pdn/server:${APP_VERSION}
+          docker tag releases-docker.jfrog.io/jfrog/pdn/server:${APP_VERSION} ailuoli/pdn-server:${APP_VERSION}
+          
+          docker pull releases-docker.jfrog.io/alpine:3.14.2
+          docker tag releases-docker.jfrog.io/alpine:3.14.2 ailuoli/alpine:3.14.2
 
       # Runs a set of commands using the runners shell
       - name: Push to Docker Registry
         run: |
           docker push ailuoli/ubi-minimal:9.1.0.1793
           docker push ailuoli/ubi-minimal:8.6-902
+          docker push ailuoli/xray-analysis:${APP_VERSION}
+          docker push ailuoli/xray-indexer:${APP_VERSION}
+          docker push ailuoli/xray-persist:${APP_VERSION}
+          docker push ailuoli/xray-server:${APP_VERSION}
+          docker push ailuoli/router:7.67.0
+          docker push ailuoli/router:7.45.0 
+          docker push ailuoli/observability:1.13.1
+          docker push ailuoli/observability:1.9.3 
+          docker push ailuoli/artifactory-pro:${APP_VERSION}
+          docker push ailuoli/nginx-artifactory-pro:${APP_VERSION}
+          docker push ailuoli/distribution-distribution:${APP_VERSION}
+          docker push ailuoli/elasticsearch-sg:7.17.6
+          docker push ailuoli/insight-server:${APP_VERSION}
+          docker push ailuoli/insight-scheduler:${APP_VERSION}
+          docker push ailuoli/pdn-server:${APP_VERSION}
+          docker push ailuoli/alpine:3.14.2
