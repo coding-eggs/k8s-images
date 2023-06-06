@@ -35,7 +35,7 @@ jobs:
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-controller:${PIPELINE_VERSION}
           
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:${PIPELINE_VERSION}
-          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:${PIPELINE_VERSION}ailuoli/tektoncd-pipeline-cmd-entrypoint:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-entrypoint:${PIPELINE_VERSION}
           
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:${PIPELINE_VERSION}
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-nop:${PIPELINE_VERSION}
