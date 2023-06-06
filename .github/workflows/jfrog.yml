@@ -41,6 +41,7 @@ jobs:
           docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902
           docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902 ailuoli/ubi-minimal:8.6-902
           
+          
           docker pull releases-docker.jfrog.io/jfrog/xray-analysis:${APP_VERSION}
           docker tag releases-docker.jfrog.io/jfrog/xray-analysis:${APP_VERSION} ailuoli/xray-analysis:${APP_VERSION}
           
@@ -57,13 +58,13 @@ jobs:
           docker tag releases-docker.jfrog.io/jfrog/router:7.67.0 ailuoli/router:7.67.0
 
           docker pull releases-docker.jfrog.io/jfrog/router:7.45.0
-          docker tag releases-docker.jfrog.io/jfrog/router:7.45.0 ailuoli/router:7.45.0         
+          docker tag releases-docker.jfrog.io/jfrog/router:7.45.0 ailuoli/router:7.45.0
           
           docker pull releases-docker.jfrog.io/jfrog/observability:1.13.1
-          docker tag releases-docker.jfrog.io/jfrog/observability:1.13.1 ailuoli/observability:1.13.1      
+          docker tag releases-docker.jfrog.io/jfrog/observability:1.13.1 ailuoli/observability:1.13.1   
           
           docker pull releases-docker.jfrog.io/jfrog/observability:1.9.3
-          docker tag releases-docker.jfrog.io/jfrog/observability:1.9.3 ailuoli/observability:1.9.3 
+          docker tag releases-docker.jfrog.io/jfrog/observability:1.9.3 ailuoli/observability:1.9.3
           
           docker pull releases-docker.jfrog.io/jfrog/artifactory-pro:${APP_VERSION}
           docker tag releases-docker.jfrog.io/jfrog/artifactory-pro:${APP_VERSION} ailuoli/artifactory-pro:${APP_VERSION}
