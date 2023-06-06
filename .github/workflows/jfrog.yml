@@ -32,8 +32,8 @@ jobs:
           docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:9.1.0.1793
           docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:9.1.0.1793 ailuoli/ubi-minimal:9.1.0.1793
           
-          docker pull releases-docker.jfrog.io/jfrog/xray-analysis:${JFROG_APP_VERSION}
-          docker tag releases-docker.jfrog.io/jfrog/xray-analysis:${JFROG_APP_VERSION} ailuoli/xray-analysis:${JFROG_APP_VERSION}
+          docker pull releases-docker.jfrog.io/jfrog/xray-analysis:7.59.9
+          docker tag releases-docker.jfrog.io/jfrog/xray-analysis:7.59.9 ailuoli/xray-analysis:7.59.9
 
       - name: Docker Login
         uses: docker/login-action@v2.1.0
@@ -45,4 +45,4 @@ jobs:
       - name: Push to Docker Registry
         run: |
           docker push ailuoli/ubi-minimal:9.1.0.1793
-          docker push ailuoli/xray-analysis:${JFROG_APP_VERSION}
+          docker push ailuoli/xray-analysis:7.59.9
