@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      APPVERSION: "7.59.9"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -27,10 +29,10 @@ jobs:
         run: |
           docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:9.1.0.1793
           docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:9.1.0.1793 ailuoli/ubi-minimal:9.1.0.1793
-
+          
           docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902
           docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902 ailuoli/ubi-minimal:8.6-902
-
+          
           docker pull releases-docker.jfrog.io/jfrog/xray-analysis:7.59.9
           docker tag releases-docker.jfrog.io/jfrog/xray-analysis:7.59.9 ailuoli/xray-analysis:7.59.9
           
@@ -50,7 +52,7 @@ jobs:
           docker tag releases-docker.jfrog.io/jfrog/router:7.45.0 ailuoli/router:7.45.0
           
           docker pull releases-docker.jfrog.io/jfrog/observability:1.13.1
-          docker tag releases-docker.jfrog.io/jfrog/observability:1.13.1 ailuoli/observability:1.13.1   
+          docker tag releases-docker.jfrog.io/jfrog/observability:1.13.1 ailuoli/observability:1.13.1
           
           docker pull releases-docker.jfrog.io/jfrog/observability:1.9.3
           docker tag releases-docker.jfrog.io/jfrog/observability:1.9.3 ailuoli/observability:1.9.3
@@ -94,9 +96,9 @@ jobs:
           docker push ailuoli/xray-persist:7.59.9
           docker push ailuoli/xray-server:7.59.9
           docker push ailuoli/router:7.67.0
-          docker push ailuoli/router:7.45.0 
+          docker push ailuoli/router:7.45.0
           docker push ailuoli/observability:1.13.1
-          docker push ailuoli/observability:1.9.3 
+          docker push ailuoli/observability:1.9.3
           docker push ailuoli/artifactory-pro:7.59.9
           docker push ailuoli/nginx-artifactory-pro:7.59.9
           docker push ailuoli/distribution-distribution:7.59.9
