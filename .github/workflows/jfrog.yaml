@@ -32,8 +32,8 @@ jobs:
           docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:9.1.0.1793
           docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:9.1.0.1793 ailuoli/ubi-minimal:9.1.0.1793
           
-          docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902
-          docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902 ailuoli/ubi-minimal:8.6-902
+#          docker pull releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902
+#          docker tag releases-docker.jfrog.io/ubi9/ubi-minimal:8.6-902 ailuoli/ubi-minimal:8.6-902
           
           docker pull releases-docker.jfrog.io/jfrog/xray-analysis:${APP_VERSION}
           docker tag releases-docker.jfrog.io/jfrog/xray-analysis:${APP_VERSION} ailuoli/xray-analysis:${APP_VERSION}
@@ -93,7 +93,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Push to Docker Registry
         run: |
-          docker push ailuoli/ubi-minimal:8.6-902
+#          docker push ailuoli/ubi-minimal:8.6-902
           docker push ailuoli/ubi-minimal:9.1.0.1793
           docker push ailuoli/xray-analysis:${APP_VERSION}
           docker push ailuoli/xray-indexer:${APP_VERSION}
