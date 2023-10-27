@@ -51,6 +51,9 @@ jobs:
           
           docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:${PIPELINE_VERSION}
           docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook:${PIPELINE_VERSION} ailuoli/tektoncd-pipeline-cmd-webhook:${PIPELINE_VERSION}
+
+          docker pull gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/events:${PIPELINE_VERSION}
+          docker tag gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/events:${PIPELINE_VERSION} ailuoli/tekton-pipeline-cmd-events:${PIPELINE_VERSION}
           
           docker pull gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:${DASHBOARD_VERSION}
           docker tag gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:${DASHBOARD_VERSION} ailuoli/tektoncd-dashboard-cmd-dashboard:${DASHBOARD_VERSION}
@@ -83,11 +86,13 @@ jobs:
           docker push ailuoli/tektoncd-pipeline-cmd-workingdirinit:${PIPELINE_VERSION}
           docker push ailuoli/tektoncd-pipeline-cmd-resolvers:${PIPELINE_VERSION}
           docker push ailuoli/tektoncd-pipeline-cmd-webhook:${PIPELINE_VERSION}
+          docker push ailuoli/tekton-pipeline-cmd-events:${PIPELINE_VERSION}
           docker push ailuoli/tektoncd-dashboard-cmd-dashboard:${DASHBOARD_VERSION}
           docker push ailuoli/tektoncd-triggers-cmd-controller:${TRIGGER_VERSION}
           docker push ailuoli/tektoncd-triggers-cmd-eventlistenersink:${TRIGGER_VERSION}
           docker push ailuoli/tektoncd-triggers-cmd-webhook:${TRIGGER_VERSION}
           docker push ailuoli/tektoncd-triggers-cmd-interceptors:${TRIGGER_VERSION}
+
           
           
 
