@@ -20,9 +20,9 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      PIPELINE_VERSION: "v0.47.0"
-      TRIGGER_VERSION: "v0.23.1"
-      DASHBOARD_VERSION: "v0.35.0"
+      PIPELINE_VERSION: "v0.52.1"
+      TRIGGER_VERSION: "v0.25.2"
+      DASHBOARD_VERSION: "v0.40.1"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
