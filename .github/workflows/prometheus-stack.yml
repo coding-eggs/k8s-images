@@ -51,6 +51,7 @@ jobs:
         run: |
           docker push ailuoli/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
           docker push ailuoli/prometheus-config-reloader:${HOME_CHART_APPVERSION}
+          docker push ailuoli/kube-state-metrics:${HOME_CHART_APPVERSION}
 
           
           
