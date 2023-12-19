@@ -36,6 +36,9 @@ jobs:
           docker pull quay.io/prometheus-operator/prometheus-config-reloader:${HOME_CHART_APPVERSION}
           docker tag quay.io/prometheus-operator/prometheus-config-reloader:${HOME_CHART_APPVERSION} ailuoli/prometheus-config-reloader:${HOME_CHART_APPVERSION}
 
+          docker pull registry.k8s.io/kube-state-metrics/kube-state-metrics:${HOME_CHART_APPVERSION}
+          docker tag registry.k8s.io/kube-state-metrics/kube-state-metrics:${HOME_CHART_APPVERSION} ailuoli/kube-state-metrics:${HOME_CHART_APPVERSION}
+
 
       - name: Docker Login
         uses: docker/login-action@v2.1.0
