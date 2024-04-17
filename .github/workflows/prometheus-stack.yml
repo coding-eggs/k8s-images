@@ -34,9 +34,6 @@ jobs:
           docker pull registry.k8s.io/ingress-nginx/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
           docker tag registry.k8s.io/ingress-nginx/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION} ailuoli/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
           
-          # docker pull quay.io/prometheus-operator/prometheus-config-reloader:${HOME_CHART_APPVERSION}
-          # docker tag quay.io/prometheus-operator/prometheus-config-reloader:${HOME_CHART_APPVERSION} ailuoli/prometheus-config-reloader:${HOME_CHART_APPVERSION}
-
           docker pull registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_VERSION}
           docker tag registry.k8s.io/kube-state-metrics/kube-state-metrics:${KUBE_STATE_METRICS_VERSION} ailuoli/kube-state-metrics:${KUBE_STATE_METRICS_VERSION}
 
@@ -51,7 +48,6 @@ jobs:
       - name: Push to Docker Registry
         run: |
           docker push ailuoli/kube-webhook-certgen:${KUBE_WEBHOOK_CERTGEN_VERSION}
-          docker push ailuoli/prometheus-config-reloader:${HOME_CHART_APPVERSION}
           docker push ailuoli/kube-state-metrics:${KUBE_STATE_METRICS_VERSION}
 
           
