@@ -22,7 +22,7 @@ jobs:
     env:
       HOME_CHART_APPVERSION: "v0.73.1"
       KUBE_WEBHOOK_CERTGEN_VERSION: "v20221220-controller-v1.5.1-58-g787ea74b6"
-      KUBE_STATE_METRICS_VERSION: "2.12.0"
+      KUBE_STATE_METRICS_VERSION: "v2.12.0"
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
